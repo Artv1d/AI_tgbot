@@ -1,0 +1,10 @@
+# Обработка данных
+pandas==2.2.2
+numpy==1.26.4
+
+# Машинное обучение
+scikit-learn==1.6.1
+xgboost==2.1.4
+lightgbm==4.5.0
+catboost==1.2.7
+lightautoml==0.4.1
