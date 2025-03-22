@@ -1,4 +1,6 @@
-*.pkl
+__pycache__
 .venv
 .vscode
+*.pkl
 catboost_info
+test.py
