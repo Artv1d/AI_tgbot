@@ -44,7 +44,7 @@ input_data = {
     'date': '2023-06-24',
     'frequency': 1,
     'team_rating': 1,
-    'starting_price': 1000
+    'starting_price': 8.8
 }
 
 predictions = get_price(input_data)

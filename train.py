@@ -10,7 +10,7 @@ warnings.filterwarnings('ignore')
 
 import joblib
 
-path = 'StickerBot/Stickers.csv'
+path = 'Stickers.csv'
 df = pd.read_csv(path).dropna()
 df['date'] = pd.to_datetime(df['date'])
 df = df.sort_values(by='date')
