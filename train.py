@@ -16,6 +16,7 @@ import joblib
 path = 'Stickers.csv'
 df = pd.read_csv(path).dropna()
 df['date'] = pd.to_datetime(df['date'])
+df['date'] = pd.to_datetime(df['date'], format='%d.%m.%Y')
 df = df.sort_values(by='date')
 
 # Определение целевых переменных
