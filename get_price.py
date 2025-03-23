@@ -8,6 +8,7 @@ model = joblib.load('model.pkl')
 encoder = joblib.load('encoder.pkl')
 scaler = joblib.load('scaler.pkl')
 
+
 def get_price(input_data):
     # Приведение числовых переменных к float
     for key in ['rarity', 'frequency', 'team_rating', 'starting_price']:
@@ -21,9 +22,9 @@ def get_price(input_data):
     # Кодирование team_name
     df['team_name_encoded'] = encoder.transform(df[['team_name']])
     df = df.drop('team_name', axis=1)
-    
+
     # Преобразование даты
-    df['date'] = pd.to_datetime(df['date'])
+    df['date'] = pd.to_datetime(df['date'], format='%d.%m.%Y')
     df['month'] = df['date'].dt.month
     df['year'] = df['date'].dt.year
     df['day'] = df['date'].dt.day
@@ -32,11 +33,11 @@ def get_price(input_data):
     # Шкалирование
     numeric_cols = ['rarity', 'frequency', 'team_rating', 'starting_price', 'team_name_encoded',
                     'month', 'year', 'day', ]
-    df[numeric_cols] = scaler.transform(df[numeric_cols])   
-    
+    df[numeric_cols] = scaler.transform(df[numeric_cols])
+
     # Предсказание
     prediction = model.predict(df)
-    
+
     # Формируем результат
     months = [1, 2, 3, 4, 5, 6]
     return {f'price_{m}': round(pred, 2) for m, pred in zip(months, prediction[0])}
