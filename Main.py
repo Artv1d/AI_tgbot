@@ -162,7 +162,12 @@ def get_starting_price(message):
             raise ValueError("Стартовая цена должна быть больше 0.")
         input_data["starting_price"] = starting_price
         print (input_data)
-        bot.send_message(message.chat.id, f"Прогнозируемая цена скина: {get_price.get_price(input_data)['price_6']} ₽")
+        bot.send_message(message.chat.id, f"Прогнозируемая цена через 1 месяц: {get_price.get_price(input_data)['price_1']} ₽\n"
+                                               f"Прогнозируемая цена через 2 месяца: {get_price.get_price(input_data)['price_2']} ₽\n"
+                                               f"Прогнозируемая цена через 3 месяца: {get_price.get_price(input_data)['price_3']} ₽\n"
+                                               f"Прогнозируемая цена через 4 месяца: {get_price.get_price(input_data)['price_4']} ₽\n"
+                                               f"Прогнозируемая цена через 5 месяцев: {get_price.get_price(input_data)['price_5']} ₽\n"
+                                               f"Прогнозируемая цена через 6 месяцев: {get_price.get_price(input_data)['price_6']} ₽\n")
 
     except ValueError as e:
         bot.send_message(message.chat.id, f"Ошибка: {e}\nПожалуйста, введите число больше 0.", reply_markup=types.ReplyKeyboardRemove())
